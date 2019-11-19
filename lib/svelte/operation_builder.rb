@@ -17,7 +17,7 @@ module Svelte
           options = builder.options(full_parameters: parameters)
           request_parameters = builder.request_parameters(full_parameters: parameters)
           headers = builder.strip_headers!(
-            operation_parameters: operation.properties["parameters"],
+            operation_parameters: operation.properties.fetch("parameters", []),
             request_parameters: request_parameters)
 
           headers = builder.build_headers(options: options).merge(headers)
