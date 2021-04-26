@@ -26,6 +26,8 @@ module Svelte
         end
       rescue Faraday::TimeoutError => e
         raise HTTPError.new(parent: e)
+      rescue Faraday::ConnectionFailed => e
+        raise HTTPError.new(parent: e)
       rescue Faraday::ResourceNotFound => e
         raise HTTPError.new(parent: e)
       rescue Faraday::ClientError => e
