@@ -24,7 +24,11 @@ module Svelte
         connection.send verb, url, params, headers do |request|
           request.options.timeout = options[:timeout] if options[:timeout]
         end
-      rescue Faraday::TimeoutError => e
+      # https://github.com/lostisland/faraday-retry#specify-which-exceptions-should-trigger-a-retry
+      # Network timeouts may raise either of these three errors. Not handling them may result in really weird bugs, see
+      # https://www.schneems.com/2017/02/21/the-oldest-bug-in-ruby-why-racktimeout-might-hose-your-server/
+      # https://jvns.ca/blog/2015/11/27/why-rubys-timeout-is-dangerous-and-thread-dot-raise-is-terrifying/
+      rescue Faraday::TimeoutError, Errno::ETIMEDOUT, Timeout::Error => e
         raise HTTPError.new(parent: e)
       rescue Faraday::ConnectionFailed => e
         raise HTTPError.new(parent: e)
