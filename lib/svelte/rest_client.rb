@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 require 'faraday'
-require 'faraday_middleware'
-require 'typhoeus'
-require 'typhoeus/adapters/faraday'
+require 'faraday/typhoeus'
 
 module Svelte
   # Rest client to make requests to the service endpoints

@@ -20,9 +20,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.4'
 
+  spec.add_dependency 'base64'
   spec.add_dependency 'faraday', '>= 0.9'
-  spec.add_dependency 'faraday_middleware', '>= 0.10'
-  spec.add_dependency 'typhoeus', '~> 1.0'
+  spec.add_dependency 'faraday-typhoeus', '~> 1.0'
 
   spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'rake', '~> 12.3'
