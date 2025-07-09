@@ -20,14 +20,15 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.4'
 
-  spec.add_dependency 'faraday', '~> 1.0'
-  spec.add_dependency 'faraday_middleware', '~> 1.0'
+  spec.add_dependency 'faraday', '>= 0.9'
+  spec.add_dependency 'faraday_middleware', '>= 0.10'
   spec.add_dependency 'typhoeus', '~> 1.0'
 
   spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'redcarpet', '~> 3.3'
   spec.add_development_dependency 'rspec', '~> 3.4'
+  spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'simplecov', '~> 0.11'
   spec.add_development_dependency 'webmock', '~> 3.6'
