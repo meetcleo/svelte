@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 require 'faraday'
-require 'faraday_middleware'
-require 'typhoeus'
-require 'typhoeus/adapters/faraday'
+require 'faraday/typhoeus'
 
 module Svelte
   # Rest client to make requests to the service endpoints
@@ -35,6 +33,8 @@ module Svelte
       rescue Faraday::ResourceNotFound => e
         raise HTTPError.new(parent: e)
       rescue Faraday::ClientError => e
+        raise HTTPError.new(parent: e)
+      rescue Faraday::ConnectionFailed => e
         raise HTTPError.new(parent: e)
       end
 
